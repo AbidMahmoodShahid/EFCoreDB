@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EFCoreDB.ConventionalConfigurationUnitOfWork\EFCoreDB.ConventionalConfigurationUnitOfWork.csproj" />
+    <ProjectReference Include="..\EFCoreDB.DataStorage\EFCoreDB.DataStorage.csproj" />
+    <ProjectReference Include="..\EFCoreDB.ManualConfigurationDataStorage\EFCoreDB.ManualConfigurationDataStorage.csproj" />
+    <ProjectReference Include="..\EFCoreDB.ManualConfigurationUnitOfWork\EFCoreDB.ManualConfigurationUnitOfWork.csproj" />
+    <ProjectReference Include="..\EFCoreDB.Models\EFCoreDB.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EFCoreDB.ConventionalConfigurationRepository\EFCoreDB.ConventionalConfigurationRepository.csproj" />
+    <ProjectReference Include="..\EFCoreDB.DataStorage\EFCoreDB.DataStorage.csproj" />
+  </ItemGroup>
+
+</Project>
