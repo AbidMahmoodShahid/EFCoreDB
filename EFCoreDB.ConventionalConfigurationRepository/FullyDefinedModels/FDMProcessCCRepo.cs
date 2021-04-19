@@ -18,6 +18,27 @@ namespace EFCoreDB.ConventionalConfigurationRepository.FullyDefinedModels
             _eFCoreDBDataContext = eFCoreDBDataContext;
         }
 
+        #region GetProcess
+
+        public async Task<List<FDMProcessCC>> GetAll()
+        {
+            return _eFCoreDBDataContext.FDMProcessCC.Include(process => process.GroupList).ToList();
+        }
+
+        public async Task<FDMProcessCC> GetUsingPrimaryKey(int primaryKey)
+        {
+            return _eFCoreDBDataContext.FDMProcessCC.Where(process => process.FDMProcessCCPrimaryKey == primaryKey).Include(process => process.GroupList).FirstOrDefault();
+        }
+
+        public async Task<List<FDMProcessCC>> GetUsingName(string name)
+        {
+            return _eFCoreDBDataContext.FDMProcessCC.Where(process => process.Name == name).Include(process => process.GroupList).ToList();
+        }
+
+        #endregion
+
+        #region add
+
         public async Task Attach(FDMProcessCC fDMProcessCC)
         {
             _eFCoreDBDataContext.FDMProcessCC.Attach(fDMProcessCC);
@@ -27,6 +48,10 @@ namespace EFCoreDB.ConventionalConfigurationRepository.FullyDefinedModels
         {
             _eFCoreDBDataContext.FDMProcessCC.AttachRange(fDMProcessCCList);
         }
+
+        #endregion
+
+        #region delete
 
         public async Task Delete(FDMProcessCC fDMProcessCC)
         {
@@ -38,10 +63,14 @@ namespace EFCoreDB.ConventionalConfigurationRepository.FullyDefinedModels
             _eFCoreDBDataContext.FDMProcessCC.RemoveRange(fDMProcessCCList);
         }
 
-        public async Task<List<FDMProcessCC>> GetAll()
+        public async Task DeleteUsingPrimaryKey(int primaryKey)
         {
-            return _eFCoreDBDataContext.FDMProcessCC.Include(process => process.GroupList).ToList();
+            _eFCoreDBDataContext.Remove((_eFCoreDBDataContext.FDMProcessCC.Single(process => process.FDMProcessCCPrimaryKey == primaryKey)));
         }
+
+        #endregion
+
+        #region update
 
         public async Task Update(FDMProcessCC fDMProcessCC)
         {
@@ -52,5 +81,7 @@ namespace EFCoreDB.ConventionalConfigurationRepository.FullyDefinedModels
         {
             _eFCoreDBDataContext.FDMProcessCC.UpdateRange(fDMProcessCCList);
         }
+
+        #endregion
     }
 }
