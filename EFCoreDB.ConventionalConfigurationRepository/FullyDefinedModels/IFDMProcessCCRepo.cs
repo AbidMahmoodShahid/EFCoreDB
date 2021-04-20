@@ -33,7 +33,7 @@ namespace EFCoreDB.ConventionalConfigurationRepository.FullyDefinedModels
 
         Task DeleteRange(List<FDMProcessCC> fDMProcessCCList);
 
-        Task DeleteUsingPrimaryKey(int primaryKey);
+        Task DeleteAll();
 
         #endregion
 

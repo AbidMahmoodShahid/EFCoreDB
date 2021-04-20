@@ -63,9 +63,10 @@ namespace EFCoreDB.ConventionalConfigurationRepository.FullyDefinedModels
             _eFCoreDBDataContext.FDMProcessCC.RemoveRange(fDMProcessCCList);
         }
 
-        public async Task DeleteUsingPrimaryKey(int primaryKey)
+        public async Task DeleteAll()
         {
-            _eFCoreDBDataContext.Remove((_eFCoreDBDataContext.FDMProcessCC.Single(process => process.FDMProcessCCPrimaryKey == primaryKey)));
+            List<FDMProcessCC> processFAList = _eFCoreDBDataContext.FDMProcessCC.Include(process => process.GroupList).ToList();
+            _eFCoreDBDataContext.FDMProcessCC.RemoveRange(processFAList);
         }
 
         #endregion

@@ -63,13 +63,9 @@ namespace EFCoreDB.ManualConfigurationRepository
             _eFCoreDBDataContextFA.ProcessFA.RemoveRange(processFAList);
         }
 
-        public async Task DeleteUsingPrimaryKey(int primaryKey)
+        public async Task DeleteAll()
         {
-            _eFCoreDBDataContextFA.Remove((_eFCoreDBDataContextFA.ProcessFA.Single(process => process.ProcessFAPrimaryKey == primaryKey)));
-        }
-
-        public async Task DeleteAll(List<ProcessFA> processFAList)
-        {
+            List<ProcessFA> processFAList = _eFCoreDBDataContextFA.ProcessFA.Include(process => process.GroupList).ToList();
             _eFCoreDBDataContextFA.ProcessFA.RemoveRange(processFAList);
         }
 
