@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreDB.ManualConfigurationDataStorage.Migrations
 {
     [DbContext(typeof(EFCoreDBDataContextFA))]
-    [Migration("20210420091129_Initial Migration Manual Configuration")]
-    partial class InitialMigrationManualConfiguration
+    [Migration("20210420120344_Initial Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -153,7 +153,8 @@ namespace EFCoreDB.ManualConfigurationDataStorage.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProcessFAPrimaryKey");
+                    b.HasKey("ProcessFAPrimaryKey")
+                        .HasName("ProcessFAPrimaryKey");
 
                     b.ToTable("ProcessFA");
                 });

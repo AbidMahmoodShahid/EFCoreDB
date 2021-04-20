@@ -151,7 +151,8 @@ namespace EFCoreDB.ManualConfigurationDataStorage.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProcessFAPrimaryKey");
+                    b.HasKey("ProcessFAPrimaryKey")
+                        .HasName("ProcessFAPrimaryKey");
 
                     b.ToTable("ProcessFA");
                 });

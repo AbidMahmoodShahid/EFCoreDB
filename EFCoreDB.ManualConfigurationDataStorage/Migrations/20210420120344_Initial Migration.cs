@@ -2,7 +2,7 @@
 
 namespace EFCoreDB.ManualConfigurationDataStorage.Migrations
 {
-    public partial class InitialMigrationManualConfiguration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace EFCoreDB.ManualConfigurationDataStorage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProcessFA", x => x.ProcessFAPrimaryKey);
+                    table.PrimaryKey("ProcessFAPrimaryKey", x => x.ProcessFAPrimaryKey);
                 });
 
             migrationBuilder.CreateTable(

@@ -15,7 +15,6 @@ namespace EFCoreDB.ManualConfigurationDataStorage
         internal static void Configuration(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProcessFA>().HasKey(process => process.ProcessFAPrimaryKey).HasName("ProcessFAPrimaryKey");
-            modelBuilder.Entity<ProcessFA>().Property(process => process.ProcessFAPrimaryKey).ValueGeneratedOnAdd().UseIdentityColumn(seed: 1, increment: 1);
             modelBuilder.Entity<GroupFA>().HasKey(group => group.GroupFAPrimaryKey);
             modelBuilder.Entity<PointFA>().HasKey(point => point.PointFAPrimaryKey);
             modelBuilder.Entity<BlogFA>().HasKey(blog => blog.BlogFAPrimaryKey);

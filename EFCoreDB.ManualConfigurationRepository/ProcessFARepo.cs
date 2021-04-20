@@ -68,9 +68,9 @@ namespace EFCoreDB.ManualConfigurationRepository
             _eFCoreDBDataContextFA.Remove((_eFCoreDBDataContextFA.ProcessFA.Single(process => process.ProcessFAPrimaryKey == primaryKey)));
         }
 
-        public async Task DeleteAllAndReseed()
+        public async Task DeleteAll(List<ProcessFA> processFAList)
         {
-            _eFCoreDBDataContextFA.Database.ExecuteSqlCommand("DBCC CHECKIDENT('TableName', RESEED, 0)");
+            _eFCoreDBDataContextFA.ProcessFA.RemoveRange(processFAList);
         }
 
         #endregion

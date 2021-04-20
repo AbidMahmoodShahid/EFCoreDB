@@ -35,7 +35,7 @@ namespace EFCoreDB.ManualConfigurationRepository
 
         Task DeleteUsingPrimaryKey(int primaryKey);
 
-        Task DeleteAllAndReseed();
+        Task DeleteAll(List<ProcessFA> processFAList);
 
         #endregion
 
