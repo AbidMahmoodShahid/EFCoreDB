@@ -37,11 +37,28 @@ namespace EFCoreDB.Models.ManualConfiguration
         public PostFA(string postName)
         {
             Name = postName;
-            TagFA TagFA1 = new TagFA("TagFA 1" + PostFAPrimaryKey);
-            TagFA TagFA2 = new TagFA("TagFA 2" + PostFAPrimaryKey);
-            TagFA TagFA3 = new TagFA("TagFA 3" + PostFAPrimaryKey);
-            TagFA TagFA4 = new TagFA("TagFA 4" + PostFAPrimaryKey);
-            TagFA TagFA5 = new TagFA("TagFA 5" + PostFAPrimaryKey);
+            TagList = new List<TagFA>();
+
+            if(TestMode.CreateMockData)
+                CreateMockData();
+        }
+
+        public PostFA()
+        {
+            TagList = new List<TagFA>();
+        }
+
+        #endregion
+
+        #region private 
+
+        private void CreateMockData()
+        {
+            TagFA TagFA1 = new TagFA("TagFA 1");
+            TagFA TagFA2 = new TagFA("TagFA 2");
+            TagFA TagFA3 = new TagFA("TagFA 3");
+            TagFA TagFA4 = new TagFA("TagFA 4");
+            TagFA TagFA5 = new TagFA("TagFA 5");
 
             TagList = new List<TagFA>()
             {
@@ -56,11 +73,6 @@ namespace EFCoreDB.Models.ManualConfiguration
                 TagFA4,
                 TagFA5
             };
-        }
-
-        public PostFA()
-        {
-            TagList = new List<TagFA>();
         }
 
         #endregion

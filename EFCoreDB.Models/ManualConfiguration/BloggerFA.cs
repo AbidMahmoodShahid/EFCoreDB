@@ -38,11 +38,22 @@ namespace EFCoreDB.Models.ManualConfiguration
         public BloggerFA(string bloggerName)
         {
             Name = bloggerName;
-            AddressFA = new AddressFA("AddressFA " + BloggerFAPrimaryKey);
+
+            if(TestMode.CreateMockData)
+                CreateMockData();
         }
 
         public BloggerFA()
         { }
+
+        #endregion
+
+        #region private
+
+        private void CreateMockData()
+        {
+            AddressFA = new AddressFA("AddressFA 1");
+        }
 
         #endregion
     }

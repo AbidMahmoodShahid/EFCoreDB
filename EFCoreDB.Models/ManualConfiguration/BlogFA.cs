@@ -44,17 +44,10 @@ namespace EFCoreDB.Models.ManualConfiguration
         public BlogFA(string blogname)
         {
             Name = blogname;
-            PostList = new List<PostFA>()
-            {
-                new PostFA("PostFA 1" + BlogFAPrimaryKey),
-                new PostFA("PostFA 2" + BlogFAPrimaryKey),
-                new PostFA("PostFA 3" + BlogFAPrimaryKey),
-                new PostFA("PostFA 4" + BlogFAPrimaryKey),
-                new PostFA("PostFA 5" + BlogFAPrimaryKey),
-                new PostFA("PostFA 6" + BlogFAPrimaryKey),
-                new PostFA("PostFA 7" + BlogFAPrimaryKey),
-                new PostFA("PostFA 8" + BlogFAPrimaryKey)
-            };
+            PostList = new List<PostFA>();
+
+            if(TestMode.CreateMockData)
+                CreateMockData();
         }
 
         public BlogFA()
@@ -62,6 +55,24 @@ namespace EFCoreDB.Models.ManualConfiguration
             PostList = new List<PostFA>();
         }
 
+        #endregion
+
+        #region private
+
+        private void CreateMockData()
+        {
+            PostList = new List<PostFA>()
+            {
+                new PostFA("PostFA 1"),
+                new PostFA("PostFA 2"),
+                new PostFA("PostFA 3"),
+                new PostFA("PostFA 4"),
+                new PostFA("PostFA 5"),
+                new PostFA("PostFA 6"),
+                new PostFA("PostFA 7"),
+                new PostFA("PostFA 8")
+            };
+        }
         #endregion
     }
 }

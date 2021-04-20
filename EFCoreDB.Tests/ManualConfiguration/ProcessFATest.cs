@@ -1,4 +1,5 @@
 ﻿using EFCoreDB.ManualConfigurationUnitOfWork;
+using EFCoreDB.Models;
 using EFCoreDB.Models.ManualConfiguration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,8 +12,12 @@ namespace EFCoreDB.Tests.ManualConfiguration
     {
         List<ProcessFA> _allProcess;
         int _allProcessCount;
+        bool _deleteAll;
+
         public ProcessFATest()
         {
+            TestMode.IsTestMode = true;
+            _deleteAll = false;
             _allProcess = new List<ProcessFA>();
             using(UnitOfWorkFA uow = new UnitOfWorkFA())
             {
@@ -35,8 +40,7 @@ namespace EFCoreDB.Tests.ManualConfiguration
             int actualProcessCount;
             using(UnitOfWorkFA uow = new UnitOfWorkFA())
             {
-                ProcessFA process = new ProcessFA();
-                process.Name = "Add New Process Test";
+                ProcessFA process = new ProcessFA("Add New Process Test");
                 uow.ProcessFARepo.Attach(process);
                 uow.SaveChanges();
                 actualProcessCount = uow.ProcessFARepo.GetAll().Result.Count;
@@ -56,14 +60,10 @@ namespace EFCoreDB.Tests.ManualConfiguration
             int actualProcessCount;
             using(UnitOfWorkFA uow = new UnitOfWorkFA())
             {
-                ProcessFA process1 = new ProcessFA();
-                process1.Name = "Add New Process Test 1";
-                ProcessFA process2 = new ProcessFA();
-                process2.Name = "Add New Process Test 2";
                 List<ProcessFA> processList = new List<ProcessFA>()
                 {
-                    process1,
-                    process2
+                    new ProcessFA("Add New Process Test 1"),
+                    new ProcessFA("Add New Process Test 2")
                 };
                 uow.ProcessFARepo.AttachRange(processList);
                 uow.SaveChanges();
@@ -82,8 +82,7 @@ namespace EFCoreDB.Tests.ManualConfiguration
         public void ProcessDeleteTest()
         {
             //Act
-            ProcessFA processToDelete = new ProcessFA();
-            processToDelete.Name = "Add and Delete Process Test";
+            ProcessFA processToDelete = new ProcessFA("Add and Delete Process Test");
             int expectedProcessCount;
             using(UnitOfWorkFA uow = new UnitOfWorkFA())
             {
@@ -110,14 +109,10 @@ namespace EFCoreDB.Tests.ManualConfiguration
         public void ProcessDeleteRangeTest()
         {
             //Act
-            ProcessFA processToDelete1 = new ProcessFA();
-            processToDelete1.Name = "Add and Delete Multiple Process Test 1";
-            ProcessFA processToDelete2 = new ProcessFA();
-            processToDelete2.Name = "Add and Delete Multiple Process Test 2";
             List<ProcessFA> processToDeleteList = new List<ProcessFA>()
             {
-                processToDelete1,
-                processToDelete2
+                new ProcessFA("Add and Delete Multiple Process Test 1"),
+                new ProcessFA("Add and Delete Multiple Process Test 2")
             };
             int expectedProcessCount;
             using(UnitOfWorkFA uow = new UnitOfWorkFA())
@@ -144,20 +139,23 @@ namespace EFCoreDB.Tests.ManualConfiguration
         [TestMethod]
         public void ProcessDeleteAllTest()
         {
-            //Act
-            int expectedProcessCount = 0;
-
-            //Arrange
-            int actualProcessCount;
-            using(UnitOfWorkFA uow = new UnitOfWorkFA())
+            if(_deleteAll)
             {
-                uow.ProcessFARepo.DeleteAll();
-                uow.SaveChanges();
-                actualProcessCount = uow.ProcessFARepo.GetAll().Result.Count;
-            }
+                //Act
+                int expectedProcessCount = 0;
 
-            //Assert
-            Assert.AreEqual(expectedProcessCount, actualProcessCount, "All Processes not deleted from database. Expected Process count = {0}. Actual Process count = {1}.", expectedProcessCount, actualProcessCount);
+                //Arrange
+                int actualProcessCount;
+                using(UnitOfWorkFA uow = new UnitOfWorkFA())
+                {
+                    uow.ProcessFARepo.DeleteAll();
+                    uow.SaveChanges();
+                    actualProcessCount = uow.ProcessFARepo.GetAll().Result.Count;
+                }
+
+                //Assert
+                Assert.AreEqual(expectedProcessCount, actualProcessCount, "All Processes not deleted from database. Expected Process count = {0}. Actual Process count = {1}.", expectedProcessCount, actualProcessCount);
+            }
         }
 
         #endregion

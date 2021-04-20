@@ -16,6 +16,17 @@ namespace EFCoreDB.ManualConfigurationRepository
             _eFCoreDBDataContextFA = eFCoreDBDataContextFA;
         }
 
+        #region get
+
+        public async Task<List<PointFA>> GetAll()
+        {
+            return _eFCoreDBDataContextFA.PointFA.ToList();
+        }
+
+        #endregion
+
+        #region add
+
         public async Task Attach(PointFA pointFA)
         {
             _eFCoreDBDataContextFA.PointFA.Attach(pointFA);
@@ -26,15 +37,23 @@ namespace EFCoreDB.ManualConfigurationRepository
             _eFCoreDBDataContextFA.PointFA.AttachRange(pointFAList);
         }
 
+        #endregion
+
+        #region delete
+
         public async Task Delete(PointFA pointFA)
         {
             _eFCoreDBDataContextFA.PointFA.Remove(pointFA);
         }
 
-        public async Task<List<PointFA>> GetAll()
+        public async Task DeleteRange(List<PointFA> pointFAList)
         {
-            return _eFCoreDBDataContextFA.PointFA.ToList();
+            _eFCoreDBDataContextFA.PointFA.RemoveRange(pointFAList);
         }
+
+        #endregion
+
+        #region update
 
         public async Task Update(PointFA pointFA)
         {
@@ -45,5 +64,8 @@ namespace EFCoreDB.ManualConfigurationRepository
         {
             _eFCoreDBDataContextFA.PointFA.UpdateRange(pointFAList);
         }
+
+        #endregion
+
     }
 }

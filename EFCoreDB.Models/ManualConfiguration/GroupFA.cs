@@ -37,22 +37,34 @@ namespace EFCoreDB.Models.ManualConfiguration
         public GroupFA(string groupName)
         {
             Name = groupName;
-            PointList = new List<PointFA>()
-            {
-                new PointFA("PointFA 1" + GroupFAPrimaryKey),
-                new PointFA("PointFA 2" + GroupFAPrimaryKey),
-                new PointFA("PointFA 3" + GroupFAPrimaryKey),
-                new PointFA("PointFA 4" + GroupFAPrimaryKey),
-                new PointFA("PointFA 5" + GroupFAPrimaryKey),
-                new PointFA("PointFA 6" + GroupFAPrimaryKey),
-                new PointFA("PointFA 7" + GroupFAPrimaryKey),
-                new PointFA("PointFA 8" + GroupFAPrimaryKey)
-            };
+            PointList = new List<PointFA>();
+
+            if(TestMode.CreateMockData)
+                CreateMockData();
         }
 
         public GroupFA()
         {
             PointList = new List<PointFA>();
+        }
+
+        #endregion
+
+        #region private
+
+        private void CreateMockData()
+        {
+            PointList = new List<PointFA>()
+            {
+                new PointFA("PointFA 1"),
+                new PointFA("PointFA 2"),
+                new PointFA("PointFA 3"),
+                new PointFA("PointFA 4"),
+                new PointFA("PointFA 5"),
+                new PointFA("PointFA 6"),
+                new PointFA("PointFA 7"),
+                new PointFA("PointFA 8")
+            };
         }
 
         #endregion

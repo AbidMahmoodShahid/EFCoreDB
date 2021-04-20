@@ -33,22 +33,34 @@ namespace EFCoreDB.Models.ManualConfiguration
         public ProcessFA(string processname)
         {
             Name = processname;
-            GroupList = new List<GroupFA>()
-            {
-                new GroupFA("GroupFA 1" + ProcessFAPrimaryKey),
-                new GroupFA("GroupFA 2" + ProcessFAPrimaryKey),
-                new GroupFA("GroupFA 3" + ProcessFAPrimaryKey),
-                new GroupFA("GroupFA 4" + ProcessFAPrimaryKey),
-                new GroupFA("GroupFA 5" + ProcessFAPrimaryKey),
-                new GroupFA("GroupFA 6" + ProcessFAPrimaryKey),
-                new GroupFA("GroupFA 7" + ProcessFAPrimaryKey),
-                new GroupFA("GroupFA 8" + ProcessFAPrimaryKey)
-            };
+            GroupList = new List<GroupFA>();
+
+            if(TestMode.CreateMockData)
+                CreateMockData();
         }
 
         public ProcessFA()
         {
             GroupList = new List<GroupFA>();
+        }
+
+        #endregion
+
+        #region private
+
+        private void CreateMockData()
+        {
+            GroupList = new List<GroupFA>()
+            {
+                new GroupFA("GroupFA 1"),
+                new GroupFA("GroupFA 2"),
+                new GroupFA("GroupFA 3"),
+                new GroupFA("GroupFA 4"),
+                new GroupFA("GroupFA 5"),
+                new GroupFA("GroupFA 6"),
+                new GroupFA("GroupFA 7"),
+                new GroupFA("GroupFA 8")
+            };
         }
 
         #endregion

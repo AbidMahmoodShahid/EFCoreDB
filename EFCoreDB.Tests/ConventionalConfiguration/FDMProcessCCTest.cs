@@ -11,9 +11,11 @@ namespace EFCoreDB.Tests.ConventionalConfiguration
     {
         List<FDMProcessCC> _allProcess;
         int _allProcessCount;
+        bool _deleteAll;
 
         public FDMProcessCCTest()
         {
+            _deleteAll = false;
             _allProcess = new List<FDMProcessCC>();
             using(FDMUnitOfWork uow = new FDMUnitOfWork())
             {
@@ -145,20 +147,29 @@ namespace EFCoreDB.Tests.ConventionalConfiguration
         [TestMethod]
         public void ProcessDeleteAllTest()
         {
-            //Act
-            int expectedProcessCount = 0;
-
-            //Arrange
-            int actualProcessCount;
-            using(FDMUnitOfWork uow = new FDMUnitOfWork())
+            if(_deleteAll)
             {
-                uow.FDMProcessCCRepo.DeleteAll();
-                uow.SaveChanges();
-                actualProcessCount = uow.FDMProcessCCRepo.GetAll().Result.Count;
-            }
+                //Act
+                int expectedProcessCount = 0;
 
-            //Assert
-            Assert.AreEqual(expectedProcessCount, actualProcessCount, "All Processes not deleted from database. Expected Process count = {0}. Actual Process count = {1}.", expectedProcessCount, actualProcessCount);
+                //Arrange
+                int actualProcessCount;
+                using(FDMUnitOfWork uow = new FDMUnitOfWork())
+                {
+                    uow.FDMProcessCCRepo.DeleteAll();
+                    uow.SaveChanges();
+                    actualProcessCount = uow.FDMProcessCCRepo.GetAll().Result.Count;
+                }
+
+                //Assert
+                Assert.AreEqual(expectedProcessCount, actualProcessCount, "All Processes not deleted from database. Expected Process count = {0}. Actual Process count = {1}.", expectedProcessCount, actualProcessCount);
+
+                using(FDMUnitOfWork uow = new FDMUnitOfWork())
+                {
+                    uow.FDMProcessCCRepo.AttachRange(_allProcess);
+                    uow.SaveChanges();
+                }
+            }
         }
 
         #endregion
