@@ -18,6 +18,27 @@ namespace EFCoreDB.ManualConfigurationRepository
             _eFCoreDBDataContextFA = eFCoreDBDataContextFA;
         }
 
+        #region get 
+
+        public async Task<List<ProcessFA>> GetAll()
+        {
+            return _eFCoreDBDataContextFA.ProcessFA.Include(process => process.GroupList).ToList();
+        }
+
+        public async Task<ProcessFA> GetUsingPrimaryKey(int primaryKey)
+        {
+            return _eFCoreDBDataContextFA.ProcessFA.Where(process => process.ProcessFAPrimaryKey == primaryKey).Include(process => process.GroupList).FirstOrDefault();
+        }
+
+        public async Task<List<ProcessFA>> GetUsingName(string name)
+        {
+            return _eFCoreDBDataContextFA.ProcessFA.Where(process => process.Name == name).Include(process => process.GroupList).ToList();
+        }
+
+        #endregion
+
+        #region add
+
         public async Task Attach(ProcessFA processFA)
         {
             _eFCoreDBDataContextFA.ProcessFA.Attach(processFA);
@@ -27,6 +48,10 @@ namespace EFCoreDB.ManualConfigurationRepository
         {
             _eFCoreDBDataContextFA.ProcessFA.AttachRange(processFAList);
         }
+
+        #endregion
+
+        #region delete
 
         public async Task Delete(ProcessFA processFA)
         {
@@ -38,10 +63,19 @@ namespace EFCoreDB.ManualConfigurationRepository
             _eFCoreDBDataContextFA.ProcessFA.RemoveRange(processFAList);
         }
 
-        public async Task<List<ProcessFA>> GetAll()
+        public async Task DeleteUsingPrimaryKey(int primaryKey)
         {
-            return _eFCoreDBDataContextFA.ProcessFA.Include(process => process.GroupList).ToList();
+            _eFCoreDBDataContextFA.Remove((_eFCoreDBDataContextFA.ProcessFA.Single(process => process.ProcessFAPrimaryKey == primaryKey)));
         }
+
+        public async Task DeleteAllAndReseed()
+        {
+            _eFCoreDBDataContextFA.Database.ExecuteSqlCommand("DBCC CHECKIDENT('TableName', RESEED, 0)");
+        }
+
+        #endregion
+
+        #region update
 
         public async Task Update(ProcessFA processFA)
         {
@@ -52,5 +86,8 @@ namespace EFCoreDB.ManualConfigurationRepository
         {
             _eFCoreDBDataContextFA.ProcessFA.UpdateRange(processFAList);
         }
+
+        #endregion
+
     }
 }

@@ -6,11 +6,11 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
 {
     public class UnitOfWorkFA : IDisposable
     {
-        private EFCoreDBDataContextFA _eFCoreDBDataContextFA;
+        public EFCoreDBDataContextFA EFCoreDBDataContextFA { get; }
 
         public UnitOfWorkFA()
         {
-            _eFCoreDBDataContextFA = new EFCoreDBDataContextFA();
+            EFCoreDBDataContextFA = new EFCoreDBDataContextFA();
         }
 
         #region Repos
@@ -20,8 +20,8 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
         {
             get
             {
-                if (_processFARepo == null)
-                    _processFARepo = new ProcessFARepo(_eFCoreDBDataContextFA);
+                if(_processFARepo == null)
+                    _processFARepo = new ProcessFARepo(EFCoreDBDataContextFA);
 
                 return _processFARepo;
             }
@@ -32,8 +32,8 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
         {
             get
             {
-                if (_groupFARepo == null)
-                    _groupFARepo = new GroupFARepo(_eFCoreDBDataContextFA);
+                if(_groupFARepo == null)
+                    _groupFARepo = new GroupFARepo(EFCoreDBDataContextFA);
 
                 return _groupFARepo;
             }
@@ -44,8 +44,8 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
         {
             get
             {
-                if (_pointFARepo == null)
-                    _pointFARepo = new PointFARepo(_eFCoreDBDataContextFA);
+                if(_pointFARepo == null)
+                    _pointFARepo = new PointFARepo(EFCoreDBDataContextFA);
 
                 return _pointFARepo;
             }
@@ -57,8 +57,8 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
         {
             get
             {
-                if (_blogFARepo == null)
-                    _blogFARepo = new BlogFARepo(_eFCoreDBDataContextFA);
+                if(_blogFARepo == null)
+                    _blogFARepo = new BlogFARepo(EFCoreDBDataContextFA);
 
                 return _blogFARepo;
             }
@@ -69,8 +69,8 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
         {
             get
             {
-                if (_postFARepo == null)
-                    _postFARepo = new PostFARepo(_eFCoreDBDataContextFA);
+                if(_postFARepo == null)
+                    _postFARepo = new PostFARepo(EFCoreDBDataContextFA);
 
                 return _postFARepo;
             }
@@ -81,8 +81,8 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
         {
             get
             {
-                if (_tagFARepo == null)
-                    _tagFARepo = new TagFARepo(_eFCoreDBDataContextFA);
+                if(_tagFARepo == null)
+                    _tagFARepo = new TagFARepo(EFCoreDBDataContextFA);
 
                 return _tagFARepo;
             }
@@ -94,8 +94,8 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
         {
             get
             {
-                if (_bloggerFARepo == null)
-                    _bloggerFARepo = new BloggerFARepo(_eFCoreDBDataContextFA);
+                if(_bloggerFARepo == null)
+                    _bloggerFARepo = new BloggerFARepo(EFCoreDBDataContextFA);
 
                 return _bloggerFARepo;
             }
@@ -106,8 +106,8 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
         {
             get
             {
-                if (_addressFARepo == null)
-                    _addressFARepo = new AddressFARepo(_eFCoreDBDataContextFA);
+                if(_addressFARepo == null)
+                    _addressFARepo = new AddressFARepo(EFCoreDBDataContextFA);
 
                 return _addressFARepo;
             }
@@ -119,12 +119,12 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
 
         public void SaveChanges()
         {
-            _eFCoreDBDataContextFA.SaveChanges();
+            EFCoreDBDataContextFA.SaveChanges();
         }
 
         public void Dispose()
         {
-            _eFCoreDBDataContextFA.Dispose();
+            EFCoreDBDataContextFA.Dispose();
         }
 
         #endregion

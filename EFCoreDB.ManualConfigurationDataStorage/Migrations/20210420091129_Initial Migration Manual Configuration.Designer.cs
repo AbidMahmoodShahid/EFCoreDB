@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreDB.ManualConfigurationDataStorage.Migrations
 {
     [DbContext(typeof(EFCoreDBDataContextFA))]
-    [Migration("20210416065129_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20210420091129_Initial Migration Manual Configuration")]
+    partial class InitialMigrationManualConfiguration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

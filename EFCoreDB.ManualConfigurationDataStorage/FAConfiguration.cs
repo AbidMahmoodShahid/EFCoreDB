@@ -1,7 +1,9 @@
 ﻿using EFCoreDB.Models.ManualConfiguration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +14,8 @@ namespace EFCoreDB.ManualConfigurationDataStorage
     {
         internal static void Configuration(ModelBuilder modelBuilder)
         {
-            //setting primary keys
-            modelBuilder.Entity<ProcessFA>().HasKey(process => process.ProcessFAPrimaryKey);
+            modelBuilder.Entity<ProcessFA>().HasKey(process => process.ProcessFAPrimaryKey).HasName("ProcessFAPrimaryKey");
+            modelBuilder.Entity<ProcessFA>().Property(process => process.ProcessFAPrimaryKey).ValueGeneratedOnAdd().UseIdentityColumn(seed: 1, increment: 1);
             modelBuilder.Entity<GroupFA>().HasKey(group => group.GroupFAPrimaryKey);
             modelBuilder.Entity<PointFA>().HasKey(point => point.PointFAPrimaryKey);
             modelBuilder.Entity<BlogFA>().HasKey(blog => blog.BlogFAPrimaryKey);

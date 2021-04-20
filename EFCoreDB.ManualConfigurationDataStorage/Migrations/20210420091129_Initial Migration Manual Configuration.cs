@@ -2,7 +2,7 @@
 
 namespace EFCoreDB.ManualConfigurationDataStorage.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialMigrationManualConfiguration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
