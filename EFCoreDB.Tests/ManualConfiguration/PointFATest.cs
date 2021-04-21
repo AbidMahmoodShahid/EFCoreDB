@@ -50,7 +50,7 @@ namespace EFCoreDB.Tests.ManualConfiguration
             }
 
             //Assert
-            Assert.AreEqual(expectedPointCount, actualPointCount, "Point not added to database. Expected Process count = {0}. Actual Process count = {1}.", expectedPointCount, actualPointCount);
+            Assert.AreEqual(expectedPointCount, actualPointCount, "Point not added to database. Expected Point count = {0}. Actual Point count = {1}.", expectedPointCount, actualPointCount);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace EFCoreDB.Tests.ManualConfiguration
             }
 
             //Assert
-            Assert.AreEqual(expectedPointCount, actualPointCount, "Group not added to database. Expected Group count = {0}. Actual Group count = {1}.", expectedPointCount, actualPointCount);
+            Assert.AreEqual(expectedPointCount, actualPointCount, "Point not added to database. Expected Point count = {0}. Actual Point count = {1}.", expectedPointCount, actualPointCount);
         }
 
         #endregion

@@ -25,7 +25,7 @@ namespace EFCoreDB.Models.ManualConfiguration
         #region Process_FA
 
         // Foriegn Key Property
-        public int ProcessFAForeignKey { get; set; }
+        public int? ProcessFAForeignKey { get; set; }
 
         //Reference Navigation Property(OneToOne)
         public ProcessFA ProcessFA { get; set; }

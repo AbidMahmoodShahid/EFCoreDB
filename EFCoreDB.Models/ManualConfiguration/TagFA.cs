@@ -27,10 +27,13 @@ namespace EFCoreDB.Models.ManualConfiguration
         public TagFA(string tagName)
         {
             Name = tagName;
+            PostList = new List<PostFA>();
         }
 
         public TagFA()
-        { }
+        {
+            PostList = new List<PostFA>();
+        }
 
         #endregion
     }
