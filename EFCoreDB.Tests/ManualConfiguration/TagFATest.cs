@@ -90,16 +90,16 @@ namespace EFCoreDB.Tests.ManualConfiguration
             //Arrange
             int actualTagCount;
             int actualPostCount;
-            PostFA post = new PostFA("Post in Tag Test");
-            TagFA tag = new TagFA("Tag in Post Test");
+            PostFA post = new PostFA("Post in Tag Test 1");
+            TagFA tag = new TagFA("Tag Test 1");
             tag.PostList.Add(post);
             post.TagList.Add(tag);
             BlogFA blog = _allBlogs.FirstOrDefault();
             blog.PostList.Add(post);
+
             using(UnitOfWorkFA uow = new UnitOfWorkFA())
             {
                 uow.BlogFARepo.Update(blog);
-                uow.TagFARepo.Attach(tag);
                 uow.SaveChanges();
                 actualTagCount = uow.TagFARepo.GetAll().Result.Count;
                 actualPostCount = uow.PostFARepo.GetAll().Result.Count;

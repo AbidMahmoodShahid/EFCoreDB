@@ -52,6 +52,31 @@ namespace EFCoreDB.Tests.ManualConfiguration
             Assert.AreEqual(expectedPostCount, actualPostCount, "Post not added to database. Expected Post count = {0}. Actual Post count = {1}.", expectedPostCount, actualPostCount);
         }
 
+        [TestMethod]
+        public void TagAttachWithPostTest()
+        {
+            //Act
+            int expectedPostCount = _allPostsCount + 1;
+
+            //Arrange
+            int actualPostCount;
+            BlogFA blog = _allBlogs.FirstOrDefault();
+            TagFA tag = new TagFA("Add New Tag In Post Test");
+            PostFA post = new PostFA("Post with Tag Test");
+            post.TagList.Add(tag);
+            post.BlogFAForeignKey = blog.BlogFAPrimaryKey;
+
+            using(UnitOfWorkFA uow = new UnitOfWorkFA())
+            {
+                uow.PostFARepo.Attach(post);
+                uow.SaveChanges();
+                actualPostCount = uow.PostFARepo.GetAll().Result.Count;
+            }
+
+            //Assert
+            Assert.AreEqual(expectedPostCount, actualPostCount, "Post not added to database. Expected Post count = {0}. Actual Post count = {1}.", expectedPostCount, actualPostCount);
+        }
+
         #endregion
 
         #region delete
