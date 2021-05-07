@@ -1,6 +1,5 @@
 using EFCoreDB.Models.ManualConfiguration;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace EFCoreDB.ManualConfigurationDataStorage
 {

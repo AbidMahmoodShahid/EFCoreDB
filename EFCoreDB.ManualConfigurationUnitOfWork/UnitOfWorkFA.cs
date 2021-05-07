@@ -6,11 +6,11 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
 {
     public class UnitOfWorkFA : IDisposable
     {
-        public EFCoreDBDataContextFA EFCoreDBDataContextFA { get; }
+        public EFCoreDBDataContextFA _eFCoreDBDataContextFA { get; }
 
         public UnitOfWorkFA()
         {
-            EFCoreDBDataContextFA = new EFCoreDBDataContextFA();
+            _eFCoreDBDataContextFA = new EFCoreDBDataContextFA();
         }
 
         #region Repos
@@ -21,7 +21,7 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
             get
             {
                 if(_processFARepo == null)
-                    _processFARepo = new ProcessFARepo(EFCoreDBDataContextFA);
+                    _processFARepo = new ProcessFARepo(_eFCoreDBDataContextFA);
 
                 return _processFARepo;
             }
@@ -33,7 +33,7 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
             get
             {
                 if(_groupFARepo == null)
-                    _groupFARepo = new GroupFARepo(EFCoreDBDataContextFA);
+                    _groupFARepo = new GroupFARepo(_eFCoreDBDataContextFA);
 
                 return _groupFARepo;
             }
@@ -45,7 +45,7 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
             get
             {
                 if(_pointFARepo == null)
-                    _pointFARepo = new PointFARepo(EFCoreDBDataContextFA);
+                    _pointFARepo = new PointFARepo(_eFCoreDBDataContextFA);
 
                 return _pointFARepo;
             }
@@ -58,7 +58,7 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
             get
             {
                 if(_blogFARepo == null)
-                    _blogFARepo = new BlogFARepo(EFCoreDBDataContextFA);
+                    _blogFARepo = new BlogFARepo(_eFCoreDBDataContextFA);
 
                 return _blogFARepo;
             }
@@ -70,7 +70,7 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
             get
             {
                 if(_postFARepo == null)
-                    _postFARepo = new PostFARepo(EFCoreDBDataContextFA);
+                    _postFARepo = new PostFARepo(_eFCoreDBDataContextFA);
 
                 return _postFARepo;
             }
@@ -82,7 +82,7 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
             get
             {
                 if(_tagFARepo == null)
-                    _tagFARepo = new TagFARepo(EFCoreDBDataContextFA);
+                    _tagFARepo = new TagFARepo(_eFCoreDBDataContextFA);
 
                 return _tagFARepo;
             }
@@ -95,7 +95,7 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
             get
             {
                 if(_bloggerFARepo == null)
-                    _bloggerFARepo = new BloggerFARepo(EFCoreDBDataContextFA);
+                    _bloggerFARepo = new BloggerFARepo(_eFCoreDBDataContextFA);
 
                 return _bloggerFARepo;
             }
@@ -107,7 +107,7 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
             get
             {
                 if(_addressFARepo == null)
-                    _addressFARepo = new AddressFARepo(EFCoreDBDataContextFA);
+                    _addressFARepo = new AddressFARepo(_eFCoreDBDataContextFA);
 
                 return _addressFARepo;
             }
@@ -119,12 +119,12 @@ namespace EFCoreDB.ManualConfigurationUnitOfWork
 
         public void SaveChanges()
         {
-            EFCoreDBDataContextFA.SaveChanges();
+            _eFCoreDBDataContextFA.SaveChanges();
         }
 
         public void Dispose()
         {
-            EFCoreDBDataContextFA.Dispose();
+            _eFCoreDBDataContextFA.Dispose();
         }
 
         #endregion

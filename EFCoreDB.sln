@@ -13,13 +13,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDB.ConventionalConfig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDB.ConventionalConfigurationUnitOfWork", "EFCoreDB.ConventionalConfigurationUnitOfWork\EFCoreDB.ConventionalConfigurationUnitOfWork.csproj", "{4BCA2001-C289-475D-A72A-A50693B6DDD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDB.ManualConfigurationDataStorage", "EFCoreDB.ManualConfigurationDataStorage\EFCoreDB.ManualConfigurationDataStorage.csproj", "{926A5BBB-B142-41BF-8582-561A42C12354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDB.ManualConfigurationDataStorage", "EFCoreDB.ManualConfigurationDataStorage\EFCoreDB.ManualConfigurationDataStorage.csproj", "{926A5BBB-B142-41BF-8582-561A42C12354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDB.ManualConfigurationRepository", "EFCoreDB.ManualConfigurationRepository\EFCoreDB.ManualConfigurationRepository.csproj", "{C3C6CFF3-0050-4AD9-91FF-39B52D70E62D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDB.ManualConfigurationRepository", "EFCoreDB.ManualConfigurationRepository\EFCoreDB.ManualConfigurationRepository.csproj", "{C3C6CFF3-0050-4AD9-91FF-39B52D70E62D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDB.ManualConfigurationUnitOfWork", "EFCoreDB.ManualConfigurationUnitOfWork\EFCoreDB.ManualConfigurationUnitOfWork.csproj", "{A212D774-8541-4D61-A4AA-5EF8D8351748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDB.ManualConfigurationUnitOfWork", "EFCoreDB.ManualConfigurationUnitOfWork\EFCoreDB.ManualConfigurationUnitOfWork.csproj", "{A212D774-8541-4D61-A4AA-5EF8D8351748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDB.Tests", "EFCoreDB.Tests\EFCoreDB.Tests.csproj", "{2F5DFE6D-A2BC-46A4-BCF5-2AAA2465BAC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreDB.Tests", "EFCoreDB.Tests\EFCoreDB.Tests.csproj", "{2F5DFE6D-A2BC-46A4-BCF5-2AAA2465BAC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDB.MixedConfigurationDataStorage", "EFCoreDB.MixedConfigurationDataStorage\EFCoreDB.MixedConfigurationDataStorage.csproj", "{27DB1396-4E24-42AF-8699-18DDD2B662EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDB.MixedConfigurationRepository", "EFCoreDB.MixedConfigurationRepository\EFCoreDB.MixedConfigurationRepository.csproj", "{8E41D089-F10F-4818-8638-DF19FEE585A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreDB.MixedConfigurationUnitOfWork", "EFCoreDB.MixedConfigurationUnitOfWork\EFCoreDB.MixedConfigurationUnitOfWork.csproj", "{0B3FDE20-ABD7-43D6-AFDF-B6EC0EBD9429}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{2F5DFE6D-A2BC-46A4-BCF5-2AAA2465BAC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F5DFE6D-A2BC-46A4-BCF5-2AAA2465BAC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F5DFE6D-A2BC-46A4-BCF5-2AAA2465BAC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27DB1396-4E24-42AF-8699-18DDD2B662EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27DB1396-4E24-42AF-8699-18DDD2B662EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27DB1396-4E24-42AF-8699-18DDD2B662EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27DB1396-4E24-42AF-8699-18DDD2B662EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E41D089-F10F-4818-8638-DF19FEE585A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E41D089-F10F-4818-8638-DF19FEE585A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E41D089-F10F-4818-8638-DF19FEE585A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E41D089-F10F-4818-8638-DF19FEE585A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B3FDE20-ABD7-43D6-AFDF-B6EC0EBD9429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B3FDE20-ABD7-43D6-AFDF-B6EC0EBD9429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B3FDE20-ABD7-43D6-AFDF-B6EC0EBD9429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B3FDE20-ABD7-43D6-AFDF-B6EC0EBD9429}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
