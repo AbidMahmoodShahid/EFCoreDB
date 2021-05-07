@@ -94,6 +94,7 @@ namespace EFCoreDB.Tests.ManualConfiguration
             TagFA tag = new TagFA("Tag Test 1");
             tag.PostList.Add(post);
             post.TagList.Add(tag);
+
             BlogFA blog = _allBlogs.FirstOrDefault();
             blog.PostList.Add(post);
 

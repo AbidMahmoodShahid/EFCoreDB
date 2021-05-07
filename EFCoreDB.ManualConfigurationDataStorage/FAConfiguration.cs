@@ -21,10 +21,9 @@ namespace EFCoreDB.ManualConfigurationDataStorage
             modelBuilder.Entity<GroupFA>().HasMany(g => g.PointList).WithOne().HasForeignKey(point => point.GroupFAForeignKey).HasConstraintName("ForeignKey_PointFA_GroupFA");
 
             //process-Blog-Post-Tag
-            modelBuilder.Entity<ProcessFA>().HasOne(process => process.BlogFA).WithOne(blog => blog.ProcessFA).HasForeignKey<BlogFA>(blog => blog.ProcessFAForeignKey).HasConstraintName("ForeignKey_BlogFA_ProcessFA");//(1..0 : 1..1)
-            //Note: i wanted the following relation: process and blog can have a one to one relation but must not(0..1 : 0..1). see following link(https://stackoverflow.com/questions/54497784/entity-framework-core-zero-or-one-to-zero-or-one-relation) 
+            modelBuilder.Entity<ProcessFA>().HasOne(process => process.BlogFA).WithOne(blog => blog.ProcessFA).HasForeignKey<BlogFA>(blog => blog.ProcessFAForeignKey).HasConstraintName("ForeignKey_BlogFA_ProcessFA");//(1..0 : 1..1) --> (https://stackoverflow.com/questions/54497784/entity-framework-core-zero-or-one-to-zero-or-one-relation) 
             modelBuilder.Entity<BlogFA>().HasMany(blog => blog.PostList).WithOne().HasForeignKey(post => post.BlogFAForeignKey).HasConstraintName("ForeignKey_PostFA_BlogFA");
-            //Note: post and cant be added into eachothers list at the same time, since they will have the same key relation in the PostTags table
+            //TODO AM: imp --> //Note: post and tag cant be added into eachothers list at the same time, since they will have the same key relation in the PostTags table
             modelBuilder.Entity<PostFA>().HasMany(post => post.TagList).WithMany(tag => tag.PostList).UsingEntity(j => j.ToTable("PostTags"));
 
             //Blog-Blogger-Address
